@@ -1,6 +1,4 @@
-# ⚠️⚠️⚠️⚠️ HELP WANTED
-
-please email me [ahmad.ilaiwi@gmail.com](mailto:ahmad.ilaiwi@gmail.com) and we will setup some time to speak and see if you can help maintain this library.
+# A new version supports React 18
 
 # React Calendar Timeline
 

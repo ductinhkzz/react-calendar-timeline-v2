@@ -1,7 +1,7 @@
 {
-  "name": "react-calendar-timeline",
+  "name": "react-calendar-timeline-v2",
   "version": "2.0.0",
-  "description": "react calendar timeline",
+  "description": "React calendar timeline v2",
   "main": "lib/index.js",
   "scripts": {
     "build": "npm run build:lib",
@@ -25,6 +25,10 @@
   },
   "author": "Ghost Alpha",
   "contributors": [
+    {
+      "name": "Ghost Alpha",
+      "email": "https://github.com/ductinhkzz"
+    },
     {
       "name": "Stanisław Chmiela",
       "email": "sjchmiela@gmail.com"
