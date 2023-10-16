@@ -22,10 +22,10 @@ Checkout the [examples here](https://github.com/namespace-ee/react-calendar-time
 
 ```bash
 # via yarn
-yarn add react-calendar-timeline
+yarn add react-calendar-timeline-v2
 
 # via npm
-npm install --save react-calendar-timeline
+npm install --save react-calendar-timeline-v2
 ```
 
 `react-calendar-timeline` has [react](https://reactjs.org/), [react-dom](https://reactjs.org/docs/react-dom.html), [`moment`](http://momentjs.com/) and [`interactjs`](http://interactjs.io/docs/) as peer dependencies.
@@ -35,9 +35,9 @@ npm install --save react-calendar-timeline
 At the very minimum:
 
 ```jsx
-import Timeline from 'react-calendar-timeline';
+import Timeline from 'react-calendar-timeline-v2';
 // make sure you include the timeline stylesheet or the timeline will not be styled
-import 'react-calendar-timeline/lib/Timeline.css';
+import 'react-calendar-timeline-v2/lib/Timeline.css';
 import moment from 'moment';
 
 const groups = [
@@ -736,7 +736,7 @@ import Timeline, {
   TimelineHeaders,
   SidebarHeader,
   DateHeader
-} from 'react-calendar-timeline'
+} from 'react-calendar-timeline-v2'
 
 <Timeline>
   <TimelineHeaders>
@@ -809,7 +809,7 @@ import Timeline, {
   TimelineHeaders,
   SidebarHeader,
   DateHeader
-} from 'react-calendar-timeline'
+} from 'react-calendar-timeline-v2'
 
 <Timeline>
   <TimelineHeaders>
@@ -978,7 +978,7 @@ data passed through headerData
 #### example
 
 ```jsx
-import Timeline, { TimelineHeaders, SidebarHeader, DateHeader } from 'react-calendar-timeline';
+import Timeline, { TimelineHeaders, SidebarHeader, DateHeader } from 'react-calendar-timeline-v2';
 
 <Timeline>
   <TimelineHeaders>
@@ -1109,7 +1109,7 @@ pass through the `headerData` prop content
 #### example
 
 ```jsx
-import Timeline, { TimelineHeaders, SidebarHeader, DateHeader } from 'react-calendar-timeline';
+import Timeline, { TimelineHeaders, SidebarHeader, DateHeader } from 'react-calendar-timeline-v2';
 
 <Timeline>
   <TimelineHeaders>
@@ -1163,8 +1163,8 @@ You need to include the `Timeline.css` file, either via static file reference or
 
 ## How can I have items with different colors?
 
-Now you can use item renderer for rendering items with different colors [itemRenderer](https://github.com/namespace-ee/react-calendar-timeline#itemrenderer).
-Please refer to [examples](https://github.com/namespace-ee/react-calendar-timeline/tree/master/examples#custom-item-rendering) for a sandbox example
+Now you can use item renderer for rendering items with different colors [itemRenderer](https://github.com/ductinhkzz/react-calendar-timeline-v2#itemrenderer).
+Please refer to [examples](https://github.com/ductinhkzz/react-calendar-timeline-v2/tree/master/examples#custom-item-rendering) for a sandbox example
 
 ## How can I add a sidebar on the right?
 
@@ -1205,7 +1205,7 @@ Alternatively you may import the transpiled version of the timeline like this:
 
 ```js
 // import Timeline from 'react-calendar-timeline'  // ESnext version
-import Timeline from 'react-calendar-timeline/lib'; // ES5 version
+import Timeline from 'react-calendar-timeline-v2/lib'; // ES5 version
 ```
 
 However doing so you lose on some of the features of webpack 2 and will potentially get a slightly larger bundle.
@@ -1254,8 +1254,8 @@ The pinch gesture on a trackpad (not a touch device) works in Chrome and Firefox
 If you like to improve React Calendar Timeline fork the repo and get started by running the following:
 
 ```bash
-$ git clone https://github.com/namespace-ee/react-calendar-timeline.git react-calendar-timeline
-$ cd react-calendar-timeline
+$ git clone https://github.com/ductinhkzz/react-calendar-timeline-v2
+$ cd react-calendar-timeline-v2
 $ yarn
 $ yarn start
 ```

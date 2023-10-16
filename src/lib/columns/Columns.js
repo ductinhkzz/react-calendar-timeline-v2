@@ -63,7 +63,12 @@ class Columns extends Component {
         ),
       );
 
-      const left = getLeftOffsetFromDate(time.valueOf());
+      let left = getLeftOffsetFromDate(time.valueOf());
+
+      if (firstOfType) {
+        left -= 1;
+      }
+
       const right = getLeftOffsetFromDate(nextTime.valueOf());
       lines.push(
         <div

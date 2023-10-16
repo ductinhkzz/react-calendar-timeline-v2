@@ -51,7 +51,7 @@ export class CustomHeader extends React.Component {
 
       const intervals = [];
       iterateTimes(canvasTimeStart, canvasTimeEnd, unit, timeSteps, (startTime, endTime) => {
-        const left = getLeftOffsetFromDate(startTime.valueOf());
+        const left = getLeftOffsetFromDate(startTime.valueOf()) - 1;
         const right = getLeftOffsetFromDate(endTime.valueOf());
         const width = right - left;
         intervals.push({
@@ -79,7 +79,7 @@ export class CustomHeader extends React.Component {
   getHeaderIntervals = ({ canvasTimeStart, canvasTimeEnd, unit, timeSteps, getLeftOffsetFromDate }) => {
     const intervals = [];
     iterateTimes(canvasTimeStart, canvasTimeEnd, unit, timeSteps, (startTime, endTime) => {
-      const left = getLeftOffsetFromDate(startTime.valueOf());
+      const left = getLeftOffsetFromDate(startTime.valueOf()) - 1;
       const right = getLeftOffsetFromDate(endTime.valueOf());
       const width = right - left;
       intervals.push({

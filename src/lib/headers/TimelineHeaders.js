@@ -5,14 +5,6 @@ import PropTypes from 'prop-types';
 import SidebarHeader from './SidebarHeader';
 import { RIGHT_VARIANT } from './constants';
 class TimelineHeaders extends React.Component {
-  getRootStyle = () => {
-    return {
-      ...this.props.style,
-      display: 'flex',
-      width: '100%',
-    };
-  };
-
   getCalendarHeaderStyle = () => {
     const { leftSidebarWidth, rightSidebarWidth, calendarHeaderStyle } = this.props;
     return {
@@ -62,7 +54,7 @@ class TimelineHeaders extends React.Component {
       <div
         ref={this.handleRootRef}
         data-testid="headerRootDiv"
-        style={this.getRootStyle()}
+        style={{ ...this.props.style }}
         className={clsx('rct-header-root', this.props.className)}
       >
         {leftSidebarHeader}

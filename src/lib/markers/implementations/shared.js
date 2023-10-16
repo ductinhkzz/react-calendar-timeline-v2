@@ -6,6 +6,6 @@ export const createMarkerStylesWithLeftOffset = (leftOffset) => ({
 
 export const createDefaultRenderer = (dataTestidValue) => {
   return function DefaultMarkerRenderer({ styles }) {
-    return <div className='rct-today-line' style={styles} data-testid={dataTestidValue} />;
+    return <div className="rct-today-line" style={styles} data-testid={dataTestidValue} />;
   };
 };

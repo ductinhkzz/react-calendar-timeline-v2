@@ -62,7 +62,7 @@ class MarkerCanvas extends React.Component {
       <MarkerCanvasProvider value={this.state}>
         <div
           style={staticStyles}
-          className='rct-markerCanvas'
+          className="rct-markerCanvas"
           onMouseMove={this.handleMouseMove}
           onMouseLeave={this.handleMouseLeave}
           ref={(el) => (this.containerEl = el)}

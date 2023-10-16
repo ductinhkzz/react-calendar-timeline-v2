@@ -492,7 +492,19 @@ export default class Item extends Component {
   getItemStyle(props) {
     const dimensions = this.props.dimensions;
 
-    const baseStyles = {
+    return {
+      ...overridableStyles,
+      ...(this.props.selected && { ...selectedStyle }),
+      ...(this.props.selected && this.canMove(this.props) && { ...selectedAndCanMove }),
+      ...(this.props.selected && this.canResizeLeft(this.props) && { ...selectedAndCanResizeLeft }),
+      ...(this.props.selected &&
+        this.canResizeLeft(this.props) &&
+        this.state.dragging && { ...selectedAndCanResizeLeftAndDragLeft }),
+      ...(this.props.selected & this.canResizeRight(this.props) && { ...selectedAndCanResizeRight }),
+      ...(this.props.selected & this.canResizeRight(this.props) & this.state.dragging && {
+        ...selectedAndCanResizeRightAndDragRight,
+      }),
+      ...props.style,
       position: 'absolute',
       left: `${dimensions.left}px`,
       top: `${dimensions.top}px`,
@@ -500,24 +512,6 @@ export default class Item extends Component {
       height: `${dimensions.height}px`,
       lineHeight: `${dimensions.height}px`,
     };
-
-    const finalStyle = Object.assign(
-      {},
-      overridableStyles,
-      this.props.selected ? selectedStyle : {},
-      this.props.selected & this.canMove(this.props) ? selectedAndCanMove : {},
-      this.props.selected & this.canResizeLeft(this.props) ? selectedAndCanResizeLeft : {},
-      this.props.selected & this.canResizeLeft(this.props) & this.state.dragging
-        ? selectedAndCanResizeLeftAndDragLeft
-        : {},
-      this.props.selected & this.canResizeRight(this.props) ? selectedAndCanResizeRight : {},
-      this.props.selected & this.canResizeRight(this.props) & this.state.dragging
-        ? selectedAndCanResizeRightAndDragRight
-        : {},
-      props.style,
-      baseStyles,
-    );
-    return finalStyle;
   }
 
   render() {
