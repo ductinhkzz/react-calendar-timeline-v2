@@ -1,0 +1,18 @@
+node_modules
+bower_components
+.DS_Store
+*.log
+.idea
+.sass-cache
+modules
+build
+gh-pages
+/lib
+package-lock.json
+# vscode stuff
+.vscode
+
+# code coverage
+coverage
+
+*.orig
