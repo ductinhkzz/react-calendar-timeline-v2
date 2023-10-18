@@ -8,6 +8,21 @@ import memoize from 'memoize-one';
 import { CustomDateHeader } from './CustomDateHeader';
 
 class DateHeader extends React.Component {
+  static propTypes = {
+    unit: PropTypes.string,
+    style: PropTypes.object,
+    className: PropTypes.string,
+    timelineUnit: PropTypes.string,
+    labelFormat: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
+      PropTypes.string,
+    ]).isRequired,
+    intervalRenderer: PropTypes.func,
+    headerData: PropTypes.object,
+    height: PropTypes.number,
+  };
+
   getHeaderUnit = () => {
     if (this.props.unit === 'primaryHeader') {
       return getNextUnit(this.props.timelineUnit);
@@ -68,21 +83,6 @@ class DateHeader extends React.Component {
     );
   }
 }
-
-DateHeader.propTypes = {
-  unit: PropTypes.string,
-  style: PropTypes.object,
-  className: PropTypes.string,
-  timelineUnit: PropTypes.string,
-  labelFormat: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.objectOf(PropTypes.objectOf(PropTypes.string)),
-    PropTypes.string,
-  ]).isRequired,
-  intervalRenderer: PropTypes.func,
-  headerData: PropTypes.object,
-  height: PropTypes.number,
-};
 
 const DateHeaderWrapper = ({ unit, labelFormat, style, className, intervalRenderer, headerData, height }) => (
   <TimelineStateConsumer>

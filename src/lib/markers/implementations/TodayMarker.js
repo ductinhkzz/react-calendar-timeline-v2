@@ -8,6 +8,12 @@ const defaultRenderer = createDefaultRenderer('default-today-line');
  * a set interval, dictated by the 'interval' prop.
  */
 class TodayMarker extends React.Component {
+  static propTypes = {
+    getLeftOffsetFromDate: PropTypes.func.isRequired,
+    renderer: PropTypes.func,
+    interval: PropTypes.number.isRequired,
+  };
+
   static defaultProps = {
     renderer: defaultRenderer,
   };
@@ -46,11 +52,5 @@ class TodayMarker extends React.Component {
     return this.props.renderer({ styles, date });
   }
 }
-
-TodayMarker.propTypes = {
-  getLeftOffsetFromDate: PropTypes.func.isRequired,
-  renderer: PropTypes.func,
-  interval: PropTypes.number.isRequired,
-};
 
 export default TodayMarker;

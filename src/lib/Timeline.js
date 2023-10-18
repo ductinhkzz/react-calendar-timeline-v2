@@ -26,6 +26,101 @@ import TimelineHeaders from './headers/TimelineHeaders';
 import DateHeader from './headers/DateHeader';
 
 export default class ReactCalendarTimeline extends Component {
+  static propTypes = {
+    groups: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+    items: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+    sidebarWidth: PropTypes.number,
+    rightSidebarWidth: PropTypes.number,
+    dragSnap: PropTypes.number,
+    minResizeWidth: PropTypes.number,
+    lineHeight: PropTypes.number,
+    itemHeightRatio: PropTypes.number,
+
+    minZoom: PropTypes.number,
+    maxZoom: PropTypes.number,
+    buffer: PropTypes.number,
+
+    clickTolerance: PropTypes.number,
+
+    canChangeGroup: PropTypes.bool,
+    canMove: PropTypes.bool,
+    canResize: PropTypes.oneOf([true, false, 'left', 'right', 'both']),
+    useResizeHandle: PropTypes.bool,
+    canSelect: PropTypes.bool,
+
+    stackItems: PropTypes.bool,
+
+    traditionalZoom: PropTypes.bool,
+
+    itemTouchSendsClick: PropTypes.bool,
+
+    horizontalLineClassNamesForGroup: PropTypes.func,
+
+    onItemMove: PropTypes.func,
+    onItemResize: PropTypes.func,
+    onItemClick: PropTypes.func,
+    onItemSelect: PropTypes.func,
+    onItemDeselect: PropTypes.func,
+    onCanvasClick: PropTypes.func,
+    onItemDoubleClick: PropTypes.func,
+    onItemContextMenu: PropTypes.func,
+    onCanvasDoubleClick: PropTypes.func,
+    onCanvasContextMenu: PropTypes.func,
+    onZoom: PropTypes.func,
+    onItemDrag: PropTypes.func,
+
+    moveResizeValidator: PropTypes.func,
+
+    itemRenderer: PropTypes.func,
+    groupRenderer: PropTypes.func,
+
+    className: PropTypes.string,
+    style: PropTypes.object,
+
+    keys: PropTypes.shape({
+      groupIdKey: PropTypes.string,
+      groupTitleKey: PropTypes.string,
+      groupLabelKey: PropTypes.string,
+      groupRightTitleKey: PropTypes.string,
+      itemIdKey: PropTypes.string,
+      itemTitleKey: PropTypes.string,
+      itemDivTitleKey: PropTypes.string,
+      itemGroupKey: PropTypes.string,
+      itemTimeStartKey: PropTypes.string,
+      itemTimeEndKey: PropTypes.string,
+    }),
+    headerRef: PropTypes.func,
+    scrollRef: PropTypes.func,
+
+    timeSteps: PropTypes.shape({
+      second: PropTypes.number,
+      minute: PropTypes.number,
+      hour: PropTypes.number,
+      day: PropTypes.number,
+      month: PropTypes.number,
+      year: PropTypes.number,
+    }),
+
+    defaultTimeStart: PropTypes.object,
+    defaultTimeEnd: PropTypes.object,
+
+    visibleTimeStart: PropTypes.number,
+    visibleTimeEnd: PropTypes.number,
+    onTimeChange: PropTypes.func,
+    onBoundsChange: PropTypes.func,
+
+    selected: PropTypes.array,
+
+    resizeDetector: PropTypes.shape({
+      addListener: PropTypes.func,
+      removeListener: PropTypes.func,
+    }),
+
+    verticalLineClassNamesForTime: PropTypes.func,
+
+    children: PropTypes.node,
+  };
+
   static defaultProps = {
     sidebarWidth: 150,
     rightSidebarWidth: 0,
@@ -860,98 +955,3 @@ export default class ReactCalendarTimeline extends Component {
     );
   }
 }
-
-ReactCalendarTimeline.propTypes = {
-  groups: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  items: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  sidebarWidth: PropTypes.number,
-  rightSidebarWidth: PropTypes.number,
-  dragSnap: PropTypes.number,
-  minResizeWidth: PropTypes.number,
-  lineHeight: PropTypes.number,
-  itemHeightRatio: PropTypes.number,
-
-  minZoom: PropTypes.number,
-  maxZoom: PropTypes.number,
-  buffer: PropTypes.number,
-
-  clickTolerance: PropTypes.number,
-
-  canChangeGroup: PropTypes.bool,
-  canMove: PropTypes.bool,
-  canResize: PropTypes.oneOf([true, false, 'left', 'right', 'both']),
-  useResizeHandle: PropTypes.bool,
-  canSelect: PropTypes.bool,
-
-  stackItems: PropTypes.bool,
-
-  traditionalZoom: PropTypes.bool,
-
-  itemTouchSendsClick: PropTypes.bool,
-
-  horizontalLineClassNamesForGroup: PropTypes.func,
-
-  onItemMove: PropTypes.func,
-  onItemResize: PropTypes.func,
-  onItemClick: PropTypes.func,
-  onItemSelect: PropTypes.func,
-  onItemDeselect: PropTypes.func,
-  onCanvasClick: PropTypes.func,
-  onItemDoubleClick: PropTypes.func,
-  onItemContextMenu: PropTypes.func,
-  onCanvasDoubleClick: PropTypes.func,
-  onCanvasContextMenu: PropTypes.func,
-  onZoom: PropTypes.func,
-  onItemDrag: PropTypes.func,
-
-  moveResizeValidator: PropTypes.func,
-
-  itemRenderer: PropTypes.func,
-  groupRenderer: PropTypes.func,
-
-  className: PropTypes.string,
-  style: PropTypes.object,
-
-  keys: PropTypes.shape({
-    groupIdKey: PropTypes.string,
-    groupTitleKey: PropTypes.string,
-    groupLabelKey: PropTypes.string,
-    groupRightTitleKey: PropTypes.string,
-    itemIdKey: PropTypes.string,
-    itemTitleKey: PropTypes.string,
-    itemDivTitleKey: PropTypes.string,
-    itemGroupKey: PropTypes.string,
-    itemTimeStartKey: PropTypes.string,
-    itemTimeEndKey: PropTypes.string,
-  }),
-  headerRef: PropTypes.func,
-  scrollRef: PropTypes.func,
-
-  timeSteps: PropTypes.shape({
-    second: PropTypes.number,
-    minute: PropTypes.number,
-    hour: PropTypes.number,
-    day: PropTypes.number,
-    month: PropTypes.number,
-    year: PropTypes.number,
-  }),
-
-  defaultTimeStart: PropTypes.object,
-  defaultTimeEnd: PropTypes.object,
-
-  visibleTimeStart: PropTypes.number,
-  visibleTimeEnd: PropTypes.number,
-  onTimeChange: PropTypes.func,
-  onBoundsChange: PropTypes.func,
-
-  selected: PropTypes.array,
-
-  resizeDetector: PropTypes.shape({
-    addListener: PropTypes.func,
-    removeListener: PropTypes.func,
-  }),
-
-  verticalLineClassNamesForTime: PropTypes.func,
-
-  children: PropTypes.node,
-};

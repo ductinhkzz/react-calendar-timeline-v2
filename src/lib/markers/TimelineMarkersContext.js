@@ -21,6 +21,10 @@ const createId = () => {
 };
 
 export class TimelineMarkersProvider extends React.Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+  };
+
   handleSubscribeToMarker = (newMarker) => {
     newMarker = {
       ...newMarker,
@@ -67,9 +71,5 @@ export class TimelineMarkersProvider extends React.Component {
     return <Provider value={this.state}>{this.props.children}</Provider>;
   }
 }
-
-TimelineMarkersProvider.propTypes = {
-  children: PropTypes.element.isRequired,
-};
 
 export const TimelineMarkersConsumer = Consumer;

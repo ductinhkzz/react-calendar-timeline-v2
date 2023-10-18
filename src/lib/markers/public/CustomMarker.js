@@ -4,6 +4,13 @@ import { TimelineMarkersConsumer } from '../TimelineMarkersContext';
 import { TimelineMarkerType } from '../markerType';
 
 class CustomMarker extends React.Component {
+  static propTypes = {
+    subscribeMarker: PropTypes.func.isRequired,
+    updateMarker: PropTypes.func.isRequired,
+    children: PropTypes.func,
+    date: PropTypes.number.isRequired,
+  };
+
   componentDidUpdate(prevProps) {
     if (prevProps.date !== this.props.date && this.getMarker) {
       const marker = this.getMarker();
@@ -32,13 +39,6 @@ class CustomMarker extends React.Component {
     return null;
   }
 }
-
-CustomMarker.propTypes = {
-  subscribeMarker: PropTypes.func.isRequired,
-  updateMarker: PropTypes.func.isRequired,
-  children: PropTypes.func,
-  date: PropTypes.number.isRequired,
-};
 
 // TODO: turn into HOC?
 const CustomMarkerWrapper = (props) => {

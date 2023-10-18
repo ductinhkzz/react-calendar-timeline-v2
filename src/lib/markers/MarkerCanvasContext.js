@@ -8,7 +8,7 @@ const defaultContextState = {
 };
 /* eslint-enable */
 
-const { Consumer, Provider } = React.createContext(defaultContextState);
+const MarkerCanvasContext = React.createContext(defaultContextState);
 
-export const MarkerCanvasProvider = Provider;
-export const MarkerCanvasConsumer = Consumer;
+export const MarkerCanvasProvider = MarkerCanvasContext.Provider;
+export const MarkerCanvasConsumer = MarkerCanvasContext.Consumer;

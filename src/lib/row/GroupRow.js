@@ -4,6 +4,17 @@ import clsx from 'clsx';
 import PreventClickOnDrag from '../interaction/PreventClickOnDrag';
 
 class GroupRow extends Component {
+  static propTypes = {
+    onClick: PropTypes.func.isRequired,
+    onDoubleClick: PropTypes.func.isRequired,
+    onContextMenu: PropTypes.func.isRequired,
+    isEvenRow: PropTypes.bool.isRequired,
+    style: PropTypes.object.isRequired,
+    clickTolerance: PropTypes.number.isRequired,
+    group: PropTypes.object.isRequired,
+    horizontalLineClassNamesForGroup: PropTypes.func,
+  };
+
   render() {
     const {
       onContextMenu,
@@ -39,16 +50,5 @@ class GroupRow extends Component {
     );
   }
 }
-
-GroupRow.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  onDoubleClick: PropTypes.func.isRequired,
-  onContextMenu: PropTypes.func.isRequired,
-  isEvenRow: PropTypes.bool.isRequired,
-  style: PropTypes.object.isRequired,
-  clickTolerance: PropTypes.number.isRequired,
-  group: PropTypes.object.isRequired,
-  horizontalLineClassNamesForGroup: PropTypes.func,
-};
 
 export default GroupRow;

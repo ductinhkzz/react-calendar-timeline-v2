@@ -4,6 +4,13 @@ import { TimelineMarkersConsumer } from '../TimelineMarkersContext';
 import { TimelineMarkerType } from '../markerType';
 
 class TodayMarker extends React.Component {
+  static propTypes = {
+    subscribeMarker: PropTypes.func.isRequired,
+    updateMarker: PropTypes.func.isRequired,
+    interval: PropTypes.number,
+    children: PropTypes.func,
+  };
+
   static defaultProps = {
     interval: 1000 * 10, // default to ten seconds
   };
@@ -40,12 +47,6 @@ class TodayMarker extends React.Component {
   }
 }
 
-TodayMarker.propTypes = {
-  subscribeMarker: PropTypes.func.isRequired,
-  updateMarker: PropTypes.func.isRequired,
-  interval: PropTypes.number,
-  children: PropTypes.func,
-};
 
 // TODO: turn into HOC?
 const TodayMarkerWrapper = (props) => {

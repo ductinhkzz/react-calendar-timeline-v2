@@ -7,6 +7,12 @@ const defaultCustomMarkerRenderer = createDefaultRenderer('default-customer-mark
  * CustomMarker that is placed based on passed in date prop
  */
 class CustomMarker extends React.Component {
+  static propTypes = {
+    getLeftOffsetFromDate: PropTypes.func.isRequired,
+    renderer: PropTypes.func,
+    date: PropTypes.number.isRequired,
+  };
+
   static defaultProps = {
     renderer: defaultCustomMarkerRenderer,
   };
@@ -18,11 +24,5 @@ class CustomMarker extends React.Component {
     return this.props.renderer({ styles, date });
   }
 }
-
-CustomMarker.propTypes = {
-  getLeftOffsetFromDate: PropTypes.func.isRequired,
-  renderer: PropTypes.func,
-  date: PropTypes.number.isRequired,
-};
 
 export default CustomMarker;

@@ -29,6 +29,18 @@ const defaultContextState = {
 const { Consumer, Provider } = React.createContext(defaultContextState);
 
 export class TimelineStateProvider extends React.Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+    visibleTimeStart: PropTypes.number.isRequired,
+    visibleTimeEnd: PropTypes.number.isRequired,
+    canvasTimeStart: PropTypes.number.isRequired,
+    canvasTimeEnd: PropTypes.number.isRequired,
+    canvasWidth: PropTypes.number.isRequired,
+    showPeriod: PropTypes.func.isRequired,
+    timelineUnit: PropTypes.string.isRequired,
+    timelineWidth: PropTypes.number.isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -77,17 +89,5 @@ export class TimelineStateProvider extends React.Component {
     return <Provider value={this.state.timelineContext}>{this.props.children}</Provider>;
   }
 }
-
-TimelineStateProvider.propTypes = {
-  children: PropTypes.element.isRequired,
-  visibleTimeStart: PropTypes.number.isRequired,
-  visibleTimeEnd: PropTypes.number.isRequired,
-  canvasTimeStart: PropTypes.number.isRequired,
-  canvasTimeEnd: PropTypes.number.isRequired,
-  canvasWidth: PropTypes.number.isRequired,
-  showPeriod: PropTypes.func.isRequired,
-  timelineUnit: PropTypes.string.isRequired,
-  timelineWidth: PropTypes.number.isRequired,
-};
 
 export const TimelineStateConsumer = Consumer;

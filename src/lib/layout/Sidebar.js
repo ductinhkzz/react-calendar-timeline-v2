@@ -5,6 +5,16 @@ import clsx from 'clsx';
 import { _get, arraysEqual } from '../utility/generic';
 
 export default class Sidebar extends Component {
+  static propTypes = {
+    groups: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    groupHeights: PropTypes.array.isRequired,
+    keys: PropTypes.object.isRequired,
+    groupRenderer: PropTypes.func,
+    isRightSidebar: PropTypes.bool,
+  };
+
   shouldComponentUpdate(nextProps) {
     return !(
       nextProps.keys === this.props.keys &&
@@ -66,13 +76,3 @@ export default class Sidebar extends Component {
     );
   }
 }
-
-Sidebar.propTypes = {
-  groups: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  groupHeights: PropTypes.array.isRequired,
-  keys: PropTypes.object.isRequired,
-  groupRenderer: PropTypes.func,
-  isRightSidebar: PropTypes.bool,
-};

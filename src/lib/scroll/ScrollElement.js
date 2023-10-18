@@ -3,6 +3,18 @@ import PropTypes from 'prop-types';
 import { getParentPosition } from '../utility/dom-helpers';
 
 class ScrollElement extends Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    // traditionalZoom: PropTypes.bool.isRequired,
+    scrollRef: PropTypes.func.isRequired,
+    isInteractingWithItem: PropTypes.bool.isRequired,
+    onZoom: PropTypes.func.isRequired,
+    onWheelZoom: PropTypes.func.isRequired,
+    onScroll: PropTypes.func.isRequired,
+  }
+
   constructor() {
     super();
     this.state = {
@@ -183,17 +195,5 @@ class ScrollElement extends Component {
     );
   }
 }
-
-ScrollElement.propTypes = {
-  children: PropTypes.element.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
-  // traditionalZoom: PropTypes.bool.isRequired,
-  scrollRef: PropTypes.func.isRequired,
-  isInteractingWithItem: PropTypes.bool.isRequired,
-  onZoom: PropTypes.func.isRequired,
-  onWheelZoom: PropTypes.func.isRequired,
-  onScroll: PropTypes.func.isRequired,
-};
 
 export default ScrollElement;

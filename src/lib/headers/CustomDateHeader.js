@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Interval from './Interval';
+
 export function CustomDateHeader({
   headerContext: { intervals, unit },
   getRootProps,
@@ -30,11 +30,3 @@ export function CustomDateHeader({
     </div>
   );
 }
-
-CustomDateHeader.propTypes = {
-  headerContext: PropTypes.object,
-  getRootProps: PropTypes.func,
-  getIntervalProps: PropTypes.func,
-  showPeriod: PropTypes.func,
-  data: PropTypes.object,
-};

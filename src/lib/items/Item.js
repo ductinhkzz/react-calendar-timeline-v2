@@ -23,6 +23,43 @@ import {
 import { TimelineStateConsumer } from '../timeline/TimelineStateContext';
 
 export default class Item extends Component {
+  static propTypes = {
+    canvasTimeStart: PropTypes.number.isRequired,
+    canvasTimeEnd: PropTypes.number.isRequired,
+    canvasWidth: PropTypes.number.isRequired,
+    order: PropTypes.object,
+  
+    dragSnap: PropTypes.number,
+    minResizeWidth: PropTypes.number,
+    selected: PropTypes.bool,
+  
+    canChangeGroup: PropTypes.bool.isRequired,
+    canMove: PropTypes.bool.isRequired,
+    canResizeLeft: PropTypes.bool.isRequired,
+    canResizeRight: PropTypes.bool.isRequired,
+  
+    keys: PropTypes.object.isRequired,
+    item: PropTypes.object.isRequired,
+  
+    onSelect: PropTypes.func,
+    onDrag: PropTypes.func,
+    onDrop: PropTypes.func,
+    onResizing: PropTypes.func,
+    onResized: PropTypes.func,
+    onContextMenu: PropTypes.func,
+    itemRenderer: PropTypes.func,
+  
+    itemProps: PropTypes.object,
+    canSelect: PropTypes.bool,
+    dimensions: PropTypes.object,
+    groupTops: PropTypes.array,
+    useResizeHandle: PropTypes.bool,
+    moveResizeValidator: PropTypes.func,
+    onItemDoubleClick: PropTypes.func,
+  
+    scrollRef: PropTypes.object,
+  };
+
   // removed prop type check for SPEED!
   // they are coming from a trusted component anyway
   // (this complicates performance debugging otherwise)
@@ -553,40 +590,3 @@ export default class Item extends Component {
     );
   }
 }
-
-Item.propTypes = {
-  canvasTimeStart: PropTypes.number.isRequired,
-  canvasTimeEnd: PropTypes.number.isRequired,
-  canvasWidth: PropTypes.number.isRequired,
-  order: PropTypes.object,
-
-  dragSnap: PropTypes.number,
-  minResizeWidth: PropTypes.number,
-  selected: PropTypes.bool,
-
-  canChangeGroup: PropTypes.bool.isRequired,
-  canMove: PropTypes.bool.isRequired,
-  canResizeLeft: PropTypes.bool.isRequired,
-  canResizeRight: PropTypes.bool.isRequired,
-
-  keys: PropTypes.object.isRequired,
-  item: PropTypes.object.isRequired,
-
-  onSelect: PropTypes.func,
-  onDrag: PropTypes.func,
-  onDrop: PropTypes.func,
-  onResizing: PropTypes.func,
-  onResized: PropTypes.func,
-  onContextMenu: PropTypes.func,
-  itemRenderer: PropTypes.func,
-
-  itemProps: PropTypes.object,
-  canSelect: PropTypes.bool,
-  dimensions: PropTypes.object,
-  groupTops: PropTypes.array,
-  useResizeHandle: PropTypes.bool,
-  moveResizeValidator: PropTypes.func,
-  onItemDoubleClick: PropTypes.func,
-
-  scrollRef: PropTypes.object,
-};

@@ -18,6 +18,11 @@ const staticStyles = {
  * CursorMarkers to subscribe to
  */
 class MarkerCanvas extends React.Component {
+  static propTypes = {
+    getDateFromLeftOffsetPosition: PropTypes.func.isRequired,
+    children: PropTypes.node,
+  };
+
   handleMouseMove = (evt) => {
     if (this.subscription != null) {
       const { pageX } = evt;
@@ -74,11 +79,6 @@ class MarkerCanvas extends React.Component {
     );
   }
 }
-
-MarkerCanvas.propTypes = {
-  getDateFromLeftOffsetPosition: PropTypes.func.isRequired,
-  children: PropTypes.node,
-};
 
 const MarkerCanvasWrapper = (props) => (
   <TimelineStateConsumer>

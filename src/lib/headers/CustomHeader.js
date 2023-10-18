@@ -5,6 +5,24 @@ import { TimelineStateConsumer } from '../timeline/TimelineStateContext';
 import { iterateTimes } from '../utility/calendar';
 
 export class CustomHeader extends React.Component {
+  static propTypes = {
+    //component props
+    children: PropTypes.func.isRequired,
+    unit: PropTypes.string.isRequired,
+    //Timeline context
+    timeSteps: PropTypes.object.isRequired,
+    timelineWidth: PropTypes.number,
+    visibleTimeStart: PropTypes.number.isRequired,
+    visibleTimeEnd: PropTypes.number.isRequired,
+    canvasTimeStart: PropTypes.number.isRequired,
+    canvasTimeEnd: PropTypes.number.isRequired,
+    canvasWidth: PropTypes.number.isRequired,
+    showPeriod: PropTypes.func.isRequired,
+    headerData: PropTypes.object,
+    getLeftOffsetFromDate: PropTypes.func.isRequired,
+    height: PropTypes.number.isRequired,
+  };
+
   constructor(props) {
     super(props);
     const { canvasTimeStart, canvasTimeEnd, canvasWidth, unit, timeSteps, showPeriod, getLeftOffsetFromDate } = props;
@@ -165,24 +183,6 @@ export class CustomHeader extends React.Component {
     return <Renderer {...props} />;
   }
 }
-
-CustomHeader.propTypes = {
-  //component props
-  children: PropTypes.func.isRequired,
-  unit: PropTypes.string.isRequired,
-  //Timeline context
-  timeSteps: PropTypes.object.isRequired,
-  timelineWidth: PropTypes.number,
-  visibleTimeStart: PropTypes.number.isRequired,
-  visibleTimeEnd: PropTypes.number.isRequired,
-  canvasTimeStart: PropTypes.number.isRequired,
-  canvasTimeEnd: PropTypes.number.isRequired,
-  canvasWidth: PropTypes.number.isRequired,
-  showPeriod: PropTypes.func.isRequired,
-  headerData: PropTypes.object,
-  getLeftOffsetFromDate: PropTypes.func.isRequired,
-  height: PropTypes.number.isRequired,
-};
 
 const CustomHeaderWrapper = ({ children, unit, headerData, height }) => (
   <TimelineStateConsumer>

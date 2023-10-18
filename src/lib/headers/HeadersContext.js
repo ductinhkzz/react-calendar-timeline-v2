@@ -17,6 +17,15 @@ const defaultContextState = {
 const { Consumer, Provider } = React.createContext(defaultContextState);
 
 export class TimelineHeadersProvider extends React.Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+    rightSidebarWidth: PropTypes.number,
+    leftSidebarWidth: PropTypes.number.isRequired,
+    //TODO: maybe this should be skipped?
+    timeSteps: PropTypes.object.isRequired,
+    registerScroll: PropTypes.func.isRequired,
+  };
+
   render() {
     const contextValue = {
       rightSidebarWidth: this.props.rightSidebarWidth,
@@ -27,14 +36,5 @@ export class TimelineHeadersProvider extends React.Component {
     return <Provider value={contextValue}>{this.props.children}</Provider>;
   }
 }
-
-TimelineHeadersProvider.propTypes = {
-  children: PropTypes.element.isRequired,
-  rightSidebarWidth: PropTypes.number,
-  leftSidebarWidth: PropTypes.number.isRequired,
-  //TODO: maybe this should be skipped?
-  timeSteps: PropTypes.object.isRequired,
-  registerScroll: PropTypes.func.isRequired,
-};
 
 export const TimelineHeadersConsumer = Consumer;

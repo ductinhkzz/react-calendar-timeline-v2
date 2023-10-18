@@ -5,6 +5,18 @@ import PropTypes from 'prop-types';
 import SidebarHeader from './SidebarHeader';
 import { RIGHT_VARIANT } from './constants';
 class TimelineHeaders extends React.Component {
+  static propTypes = {
+    registerScroll: PropTypes.func.isRequired,
+    leftSidebarWidth: PropTypes.number.isRequired,
+    rightSidebarWidth: PropTypes.number.isRequired,
+    style: PropTypes.object,
+    children: PropTypes.node,
+    className: PropTypes.string,
+    calendarHeaderStyle: PropTypes.object,
+    calendarHeaderClassName: PropTypes.string,
+    headerRef: PropTypes.func,
+  }
+
   getCalendarHeaderStyle = () => {
     const { leftSidebarWidth, rightSidebarWidth, calendarHeaderStyle } = this.props;
     return {
@@ -71,18 +83,6 @@ class TimelineHeaders extends React.Component {
     );
   }
 }
-
-TimelineHeaders.propTypes = {
-  registerScroll: PropTypes.func.isRequired,
-  leftSidebarWidth: PropTypes.number.isRequired,
-  rightSidebarWidth: PropTypes.number.isRequired,
-  style: PropTypes.object,
-  children: PropTypes.node,
-  className: PropTypes.string,
-  calendarHeaderStyle: PropTypes.object,
-  calendarHeaderClassName: PropTypes.string,
-  headerRef: PropTypes.func,
-};
 
 const TimelineHeadersWrapper = ({ children, style, className, calendarHeaderStyle, calendarHeaderClassName }) => (
   <TimelineHeadersConsumer>

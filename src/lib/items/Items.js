@@ -17,6 +17,44 @@ const canResizeRight = (item, canResize) => {
 };
 
 export default class Items extends Component {
+  static propTypes = {
+    groups: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+    items: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
+  
+    canvasTimeStart: PropTypes.number.isRequired,
+    canvasTimeEnd: PropTypes.number.isRequired,
+    canvasWidth: PropTypes.number.isRequired,
+  
+    dragSnap: PropTypes.number,
+    minResizeWidth: PropTypes.number,
+    selectedItem: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  
+    canChangeGroup: PropTypes.bool.isRequired,
+    canMove: PropTypes.bool.isRequired,
+    canResize: PropTypes.oneOf([true, false, 'left', 'right', 'both']),
+    canSelect: PropTypes.bool,
+  
+    keys: PropTypes.object.isRequired,
+  
+    moveResizeValidator: PropTypes.func,
+    itemSelect: PropTypes.func,
+    itemDrag: PropTypes.func,
+    itemDrop: PropTypes.func,
+    itemResizing: PropTypes.func,
+    itemResized: PropTypes.func,
+  
+    onItemDoubleClick: PropTypes.func,
+    onItemContextMenu: PropTypes.func,
+  
+    itemRenderer: PropTypes.func,
+    selected: PropTypes.array,
+  
+    dimensionItems: PropTypes.array,
+    groupTops: PropTypes.array,
+    useResizeHandle: PropTypes.bool,
+    scrollRef: PropTypes.object,
+  }
+
   static defaultProps = {
     selected: [],
   };
@@ -106,41 +144,3 @@ export default class Items extends Component {
     );
   }
 }
-
-Items.propTypes = {
-  groups: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-  items: PropTypes.oneOfType([PropTypes.array, PropTypes.object]).isRequired,
-
-  canvasTimeStart: PropTypes.number.isRequired,
-  canvasTimeEnd: PropTypes.number.isRequired,
-  canvasWidth: PropTypes.number.isRequired,
-
-  dragSnap: PropTypes.number,
-  minResizeWidth: PropTypes.number,
-  selectedItem: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-
-  canChangeGroup: PropTypes.bool.isRequired,
-  canMove: PropTypes.bool.isRequired,
-  canResize: PropTypes.oneOf([true, false, 'left', 'right', 'both']),
-  canSelect: PropTypes.bool,
-
-  keys: PropTypes.object.isRequired,
-
-  moveResizeValidator: PropTypes.func,
-  itemSelect: PropTypes.func,
-  itemDrag: PropTypes.func,
-  itemDrop: PropTypes.func,
-  itemResizing: PropTypes.func,
-  itemResized: PropTypes.func,
-
-  onItemDoubleClick: PropTypes.func,
-  onItemContextMenu: PropTypes.func,
-
-  itemRenderer: PropTypes.func,
-  selected: PropTypes.array,
-
-  dimensionItems: PropTypes.array,
-  groupTops: PropTypes.array,
-  useResizeHandle: PropTypes.bool,
-  scrollRef: PropTypes.object,
-};

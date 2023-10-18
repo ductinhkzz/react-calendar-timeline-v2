@@ -3,6 +3,18 @@ import React, { Component } from 'react';
 import GroupRow from './GroupRow';
 
 export default class GroupRows extends Component {
+  static propTypes = {
+    canvasWidth: PropTypes.number.isRequired,
+    lineCount: PropTypes.number.isRequired,
+    groupHeights: PropTypes.array.isRequired,
+    onRowClick: PropTypes.func.isRequired,
+    onRowDoubleClick: PropTypes.func.isRequired,
+    clickTolerance: PropTypes.number.isRequired,
+    groups: PropTypes.array.isRequired,
+    horizontalLineClassNamesForGroup: PropTypes.func,
+    onRowContextClick: PropTypes.func.isRequired,
+  };
+
   shouldComponentUpdate(nextProps) {
     return !(
       nextProps.canvasWidth === this.props.canvasWidth &&
@@ -48,15 +60,3 @@ export default class GroupRows extends Component {
     return <div className="rct-horizontal-lines">{lines}</div>;
   }
 }
-
-GroupRows.propTypes = {
-  canvasWidth: PropTypes.number.isRequired,
-  lineCount: PropTypes.number.isRequired,
-  groupHeights: PropTypes.array.isRequired,
-  onRowClick: PropTypes.func.isRequired,
-  onRowDoubleClick: PropTypes.func.isRequired,
-  clickTolerance: PropTypes.number.isRequired,
-  groups: PropTypes.array.isRequired,
-  horizontalLineClassNamesForGroup: PropTypes.func,
-  onRowContextClick: PropTypes.func.isRequired,
-};

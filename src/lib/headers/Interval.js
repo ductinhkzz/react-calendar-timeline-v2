@@ -5,6 +5,17 @@ import { getNextUnit } from '../utility/calendar';
 import { composeEvents } from '../utility/events';
 
 class Interval extends React.PureComponent {
+  static propTypes = {
+    intervalRenderer: PropTypes.func,
+    unit: PropTypes.string.isRequired,
+    interval: PropTypes.object.isRequired,
+    showPeriod: PropTypes.func.isRequired,
+    intervalText: PropTypes.string.isRequired,
+    primaryHeader: PropTypes.bool.isRequired,
+    getIntervalProps: PropTypes.func.isRequired,
+    headerData: PropTypes.object,
+  };
+
   onIntervalClick = () => {
     const { primaryHeader, interval, unit, showPeriod } = this.props;
     if (primaryHeader) {
@@ -54,16 +65,5 @@ class Interval extends React.PureComponent {
     );
   }
 }
-
-Interval.propTypes = {
-  intervalRenderer: PropTypes.func,
-  unit: PropTypes.string.isRequired,
-  interval: PropTypes.object.isRequired,
-  showPeriod: PropTypes.func.isRequired,
-  intervalText: PropTypes.string.isRequired,
-  primaryHeader: PropTypes.bool.isRequired,
-  getIntervalProps: PropTypes.func.isRequired,
-  headerData: PropTypes.object,
-};
 
 export default Interval;

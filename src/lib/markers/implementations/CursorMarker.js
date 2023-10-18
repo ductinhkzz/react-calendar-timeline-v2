@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { createMarkerStylesWithLeftOffset, createDefaultRenderer } from './shared';
-import { MarkerCanvasConsumer } from '../MarkerCanvasContext';
+import { MarkerCanvasContext } from '../MarkerCanvasContext';
 
 const defaultRenderer = createDefaultRenderer('default-cursor-marker');
 
@@ -16,9 +16,16 @@ const defaultRenderer = createDefaultRenderer('default-cursor-marker');
  *  when the user mouseleaves the element
  */
 class CursorMarker extends React.Component {
+  static propTypes = {
+    subscribeToCanvasMouseOver: PropTypes.func.isRequired,
+    renderer: PropTypes.func,
+  };
+
   static defaultProps = {
     renderer: defaultRenderer,
   };
+
+  static contextType = MarkerCanvasContext;
 
   constructor() {
     super();
@@ -39,7 +46,7 @@ class CursorMarker extends React.Component {
   };
 
   componentDidMount() {
-    this.unsubscribe = this.props.subscribeToCanvasMouseOver(this.handleCanvasMouseOver);
+    this.unsubscribe = this.context.subscribeToMouseOver(this.handleCanvasMouseOver);
   }
 
   componentWillUnmount() {
@@ -60,22 +67,4 @@ class CursorMarker extends React.Component {
   }
 }
 
-CursorMarker.propTypes = {
-  subscribeToCanvasMouseOver: PropTypes.func.isRequired,
-  renderer: PropTypes.func,
-};
-
-// TODO: turn into HOC?
-const CursorMarkerWrapper = (props) => {
-  return (
-    <MarkerCanvasConsumer>
-      {({ subscribeToMouseOver }) => {
-        return <CursorMarker subscribeToCanvasMouseOver={subscribeToMouseOver} {...props} />;
-      }}
-    </MarkerCanvasConsumer>
-  );
-};
-
-CursorMarkerWrapper.displayName = 'CursorMarkerWrapper';
-
-export default CursorMarkerWrapper;
+export default CursorMarker;

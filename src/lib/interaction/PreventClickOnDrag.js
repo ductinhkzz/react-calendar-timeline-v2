@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class PreventClickOnDrag extends Component {
+  static propTypes = {
+    children: PropTypes.element.isRequired,
+    onClick: PropTypes.func.isRequired,
+    clickTolerance: PropTypes.number.isRequired,
+  };
+
   handleMouseDown = (evt) => {
     this.originClickX = evt.clientX;
   };
@@ -30,11 +36,5 @@ class PreventClickOnDrag extends Component {
     });
   }
 }
-
-PreventClickOnDrag.propTypes = {
-  children: PropTypes.element.isRequired,
-  onClick: PropTypes.func.isRequired,
-  clickTolerance: PropTypes.number.isRequired,
-};
 
 export default PreventClickOnDrag;
