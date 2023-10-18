@@ -43,6 +43,9 @@ const config = {
     },
     port,
   },
+  externals: {
+    'prop-types': 'prop-types',
+  },
 };
 
 module.exports = config;
