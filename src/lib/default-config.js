@@ -9,7 +9,7 @@ export const defaultKeys = {
   itemGroupKey: 'group',
   itemTimeStartKey: 'start_time',
   itemTimeEndKey: 'end_time',
-};
+}
 
 export const defaultTimeSteps = {
   second: 1,
@@ -18,7 +18,7 @@ export const defaultTimeSteps = {
   day: 1,
   month: 1,
   year: 1,
-};
+}
 
 export const defaultHeaderFormats = {
   year: {
@@ -63,4 +63,4 @@ export const defaultHeaderFormats = {
     medium: 'mm:ss',
     short: 'ss',
   },
-};
+}

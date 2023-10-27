@@ -1,25 +1,26 @@
 :root {
   --item-color: #fff;
-  --item-background-color: #2196f3;
+  --item-background: #2196f3;
   --item-border-color: #1a6fb3;
   --item-selected-color: #fff;
-  --item-selected-background-color: #ffc107;
+  --item-selected-background: #ffc107;
   --item-selected-border-color: #ff9800;
-  --row-even-background-color: transparent;
-  --row-odd-background-color: rgba(0, 0, 0, 0.05);
+  --row-background-even: transparent;
+  --row-background-odd: rgba(0, 0, 0, 0.05);
   --border-color: #bbb;
   --border-width: 1px;
+  --thick-border-width: 2px;
   --sidebar-color: #fff;
-  --header-background-color: #c52020;
+  --sidebar-background-color: #c52020;
   --list-item-padding: 0 4px;
-  --weekend-background-color: rgba(250, 246, 225, 0.5);
-  --today-line-color: #000;
-  --date-header-background-color: rgb(240, 240, 240);
+  --weekend: rgba(250, 246, 225, 0.5);
+  --date-header-bg-color: #f0f0f0;
 }
 
-$border: var(--border-width) solid var(--border-color);
+$item-border: 1px solid var(--item-border-color);
+$item-selected-border: 1px solid var(--item-selected-border-color);
 
-.react-calendar-timeline {
+.react-timeline {
   * {
     box-sizing: border-box;
   }
@@ -38,26 +39,63 @@ $border: var(--border-width) solid var(--border-color);
     overflow-y: hidden;
     -ms-touch-action: none;
     touch-action: none;
-    position: relative;
-  }
-
-  .rct-markerCanvas {
-    position: absolute;
-    inset: 0px;
-  }
-
-  .rct-today-line {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: var(--today-line-color);
-    pointer-events: none;
   }
 
   .rct-item {
+    position: absolute;
+    font-size: 12px;
+    color: var(--item-color);
+    cursor: pointer;
+    background: var(--item-background);
+    border: $item-border;
+    z-index: 80;
+
+    &--selected {
+      background: var(--item-selected-background);
+      border: $item-selected-border;
+      z-index: 82;
+
+      &-resize-left {
+        border-left: 2px solid var(--item-border-color);
+      }
+      &-resize-right {
+        border-right: 2px solid var(--item-border-color);
+      }
+    }
+
+    &--cursor-move {
+      cursor: move;
+    }
+
+    &--cursor-w-resize {
+      cursor: w-resize;
+    }
+
+    &--cursor-e-resize {
+      cursor: e-resize;
+    }
+
     &:hover {
       z-index: 88;
+    }
+
+    &-handler {
+      position: absolute;
+      width: 24px;
+      max-width: 20%;
+      min-width: 2px;
+      height: 100%;
+      top: 0;
+      cursor: pointer;
+      z-index: 88;
+
+      &-left {
+        left: 0;
+      }
+
+      &-right {
+        right: 0;
+      }
     }
 
     .rct-item-content {
@@ -78,11 +116,11 @@ $border: var(--border-width) solid var(--border-color);
     display: inline-block;
     vertical-align: top;
     position: relative;
-    border-right: $border;
+    border-right: var(--border-width) solid var(--border-color);
 
     &.rct-sidebar-right {
       border-right: 0;
-      border-left: $border;
+      border-left: var(--border-width) solid var(--border-color);
     }
 
     .rct-sidebar-row {
@@ -91,13 +129,13 @@ $border: var(--border-width) solid var(--border-color);
       white-space: nowrap;
       text-overflow: ellipsis;
       margin: 0;
-      border-bottom: $border;
+      border-bottom: var(--border-width) solid var(--border-color);
 
       &.rct-sidebar-row-odd {
-        background-color: var(--row-odd-background-color);
+        background: var(--row-background-odd);
       }
       &.rct-sidebar-row-even {
-        background-color: var(--row-even-background-color);
+        background: var(--row-background-even);
       }
     }
   }
@@ -107,16 +145,14 @@ $border: var(--border-width) solid var(--border-color);
   .rct-vertical-lines {
     .rct-vl {
       position: absolute;
-      border-left: $border;
+      border-left: 1px solid var(--border-color);
       z-index: 30;
-      pointer-events: none;
-      top: 0;
       &.rct-vl-first {
-        border-left-width: 3px;
+        border-left-width: 2px;
       }
       &.rct-day-6,
       &.rct-day-0 {
-        background-color: var(--weekend-background-color);
+        background: var(--weekend);
       }
     }
   }
@@ -129,26 +165,22 @@ $border: var(--border-width) solid var(--border-color);
 
     .rct-hl-even,
     .rct-hl-odd {
-      border-bottom: $border;
+      border-bottom: var(--border-width) solid var(--border-color);
       z-index: 40;
     }
     .rct-hl-odd {
-      background-color: var(--row-odd-background-color);
+      background: var(--row-background-odd);
     }
     .rct-hl-even {
-      background-color: var(--row-even-background-color);
+      background: var(--row-background-even);
     }
   }
 
   .rct-cursor-line {
     position: absolute;
     width: 2px;
-    background-color: var(--item-background-color);
+    background: var(--item-background);
     z-index: 51;
-  }
-
-  .rct-dateHeader-wrapper {
-    position: relative;
   }
 
   .rct-dateHeader {
@@ -156,29 +188,33 @@ $border: var(--border-width) solid var(--border-color);
     align-items: center;
     justify-content: center;
     height: 100%;
+    border-bottom: 1px solid var(--border-color);
     cursor: pointer;
     font-size: 14px;
-    background-color: var(--date-header-background-color);
-    border-left: $border;
+    background-color: var(--date-header-bg-color);
+    border-left: 2px solid var(--border-color);
     position: absolute;
   }
 
   .rct-dateHeader-primary {
     background-color: initial;
-    border-left: $border;
-    border-right: $border;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
     color: var(--item-color);
   }
 
   .rct-header-root {
-    background-color: var(--header-background-color);
-    border-bottom: $border;
-    display: flex;
-    width: 100%;
+    background: var(--sidebar-background-color);
+    border-bottom: 1px solid var(--border-color);
   }
 
   .rct-calendar-header {
-    border: $border;
+    border: 1px solid var(--border-color);
     overflow: hidden;
+
+    .primaryHeader,
+    .secondaryHeader {
+      position: relative;
+    }
   }
 }

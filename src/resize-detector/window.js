@@ -1,15 +1,15 @@
 function addListener(component) {
   component._resizeEventListener = {
     handleEvent: () => {
-      component.resize();
+      component.resize()
     },
-  };
+  }
 
-  window.addEventListener('resize', component._resizeEventListener);
+  window.addEventListener('resize', component._resizeEventListener)
 }
 
 function removeListener(component) {
-  window.removeEventListener('resize', component._resizeEventListener);
+  window.removeEventListener('resize', component._resizeEventListener)
 }
 
-export default { addListener, removeListener };
+export default { addListener, removeListener }
