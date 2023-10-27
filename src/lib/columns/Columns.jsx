@@ -49,9 +49,8 @@ class Columns extends Component {
         const className = classNames(
           'rct-vl',
           firstOfType && 'rct-vl-first',
-          minUnit === 'day' ||
-            minUnit === 'hour' ||
-            (minUnit === 'minute' && `rct-day-${time.day()}`),
+          ['day', 'hour', 'minute'].includes(minUnit) &&
+            `rct-day-${time.day()}`,
           classNamesForTime,
         )
 
