@@ -6,7 +6,10 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "dev": "SHOW_ALL_COMPONENT_DEMOS=true vite serve docs --port 3000",
+    "build-docs": "rimraf docs/dist && vite build docs && serve -s docs/dist",
+    "ssr-docs": "rimraf docs/dist && vite-pages ssr docs && serve docs/dist"
   },
   "files": [
     "dist"
@@ -37,6 +40,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@mdx-js/react": "^3.0.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
@@ -46,16 +50,23 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
+    "faker": "4.1.0",
     "interactjs": "^1.10.19",
     "lodash.isequal": "^4.5.0",
     "memoize-one": "^6.0.0",
     "moment": "^2.29.4",
     "prettier": "^3.0.3",
+    "randomcolor": "^0.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.3",
+    "rimraf": "^5.0.5",
     "sass": "^1.69.4",
-    "vite": "^4.4.5",
-    "vite-plugin-css-export": "^2.0.0"
+    "serve": "^14.2.1",
+    "vite": "^4.4.8",
+    "vite-pages-theme-doc": "^5.0.0",
+    "vite-plugin-css-export": "^2.0.0",
+    "vite-plugin-react-pages": "^5.0.0"
   },
   "dependencies": {}
 }
