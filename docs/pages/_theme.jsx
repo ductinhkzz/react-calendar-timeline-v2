@@ -16,7 +16,7 @@ const theme = createTheme({
       },
     },
     {
-      label: 'Components',
+      label: 'Demo',
       path: '/demos/controlled-scrolling',
       activeIfMatch: '/components',
     },
