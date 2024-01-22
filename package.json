@@ -11,6 +11,18 @@
   "files": [
     "dist"
   ],
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-component",
+    "timeline",
+    "calendar",
+    "react-timeline",
+    "react-calendar",
+    "react-calendar-timeline",
+    "react-calendar-timeline-v2",
+    "calendar-view"
+  ],
   "main": "./dist/react-calendar-timeline-v2.umd.cjs",
   "module": "./dist/react-calendar-timeline-v2.js",
   "exports": {
